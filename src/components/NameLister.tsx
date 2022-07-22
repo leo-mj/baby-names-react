@@ -34,6 +34,7 @@ export function NameLister(): JSX.Element {
     <>
       <input
         className={styles.search}
+        value={text}
         onChange={(event) => {
           setText(event.target.value);
         }}
@@ -55,7 +56,9 @@ export function NameLister(): JSX.Element {
           {previousSex || "off"}{" "}
         </button>{" "}
       </p>
-      <p className={styles.body}>{filteredNameData.map(NamePresenter)} </p>
+      <section className={styles.body}>
+        {filteredNameData.map(NamePresenter)}{" "}
+      </section>
     </>
   );
 }
