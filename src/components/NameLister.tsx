@@ -1,5 +1,5 @@
 import { useState } from "react";
-import babyData from "/home/2206-001-lm/Developer/academy/training/html-react/baby-names-react/src/data.json";
+import babyData from "../data.json";
 import { BabyData } from "../utils/baby-interface";
 import { sortAlph } from "../utils/sortAlph";
 import { textInputFilter } from "../utils/text-input-filter";
