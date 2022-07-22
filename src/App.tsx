@@ -1,5 +1,5 @@
 import { AppHeader } from "./components/AppHeader";
-import { NameLister } from "./components/name-lister";
+import { NameLister } from "./components/NameLister";
 import { AppFooter } from "./components/AppFooter";
 
 function App(): JSX.Element {

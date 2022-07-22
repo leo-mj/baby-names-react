@@ -1,4 +1,4 @@
-h1 {
+.header {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
@@ -7,6 +7,21 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   width: auto;
+  border: solid #e3d5ca;
+  border-radius: 20px;
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 60px;
+}
+
+.search {
+  margin-bottom: 15px;
+}
+
+.filterbtn {
+  margin: 2px 4px 2px 4px;
+  font-size: medium;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .name {
@@ -17,8 +32,12 @@ h1 {
   box-shadow: 0.5px 2px #f07167;
 }
 
+.name:hover {
+  background: black;
+}
+
 #boyname {
-  background: #fed9b7;
+  background: linear-gradient(#fed9b7, white);
 }
 
 #girlname {
