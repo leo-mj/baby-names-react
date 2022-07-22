@@ -1,0 +1,26 @@
+h1 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.body {
+  display: flex;
+  flex-wrap: wrap;
+  width: auto;
+}
+
+.name {
+  margin: 2px 4px 2px 4px;
+  padding: 3px 10px 3px 10px;
+  border: hidden;
+  border-radius: 10px;
+  box-shadow: 0.5px 2px #f07167;
+}
+
+#boyname {
+  background: #fed9b7;
+}
+
+#girlname {
+  background: #fdfcdc;
+}
