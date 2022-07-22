@@ -12,6 +12,10 @@
   padding: 5px 10px 5px 10px;
 }
 
+.search {
+  margin-bottom: 15px;
+}
+
 .name {
   margin: 2px 4px 2px 4px;
   padding: 3px 10px 3px 10px;
