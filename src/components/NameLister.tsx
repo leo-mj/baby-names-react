@@ -4,7 +4,7 @@ import { sortAlph } from "../utils/sortAlph";
 import { NamePresenter } from "./NamePresenter";
 import styles from "./name-style.module.css";
 
-const nameData: BabyData[] = babyData;
+const nameData = babyData;
 const sortedNameData: BabyData[] = sortAlph(nameData);
 
 export function NameLister(): JSX.Element {
