@@ -1,13 +1,16 @@
+import styles from "./name-style.module.css";
 import { useState } from "react";
 import babyData from "../data.json";
 import { BabyData } from "../utils/baby-interface";
-import { sortAlph } from "../utils/sortAlph";
+import { sortAlph } from "../utils/sort-alphabetically";
 import { textInputFilter } from "../utils/text-input-filter";
 import { filterBySex } from "../utils/filter-by-sex";
-import { NamePresenter } from "./NamePresenter";
-import styles from "./name-style.module.css";
+import { FilterButtons } from "./FilterButtons";
+import { AllNames } from "./AllNames";
+import { AllFavourites } from "./AllFavourites";
+import { filterFavToDelete } from "../utils/filter-fav-to-delete";
 
-const nameData = babyData;
+const nameData: BabyData[] = babyData;
 const sortedNameData: BabyData[] = sortAlph(nameData);
 
 export function NameLister(): JSX.Element {
@@ -30,9 +33,19 @@ export function NameLister(): JSX.Element {
     filterBySex(baby, previousSex)
   );
 
-  const [prevFavourites, setFavourites] = useState<BabyData[]>([]);
+  const [prevFavourites, setFavourites] = useState<BabyData[]>(
+    filteredNameData.filter((baby) => baby.name === "Leo (obviously)")
+  );
   const handleFavourites = (baby: BabyData) => {
     setFavourites((prevFavourites) => [baby, ...prevFavourites]);
+  };
+
+  const handleDeleteFavourite = (favToDelete: BabyData) => {
+    setFavourites((prevFavourites) =>
+      prevFavourites.filter((currentBaby) =>
+        filterFavToDelete(currentBaby, favToDelete)
+      )
+    );
   };
 
   return (
@@ -44,35 +57,32 @@ export function NameLister(): JSX.Element {
           setText(event.target.value);
         }}
       />
-      <button className={styles.filterbtn} onClick={handleFilterOff}>
-        off
-      </button>
-      <button className={styles.filterbtn} onClick={handleGirlFilter}>
-        f
-      </button>
-      <button className={styles.filterbtn} onClick={handleBoyFilter}>
-        m
-      </button>
-      <p>
-        {" "}
-        active filter:{" "}
-        <button className={styles.filterbtn}>
-          {" "}
-          {previousSex || "off"}{" "}
-        </button>{" "}
-      </p>
-      <section className={styles.body}>
-        {filteredNameData.map((baby) => (
-          <div key={baby.id} onClick={() => handleFavourites(baby)}>
-            {NamePresenter(baby)}
-          </div>
-        ))}
+
+      <section id="filter buttons">
+        <FilterButtons
+          handleFilterOff={handleFilterOff}
+          handleGirlFilter={handleGirlFilter}
+          handleBoyFilter={handleBoyFilter}
+          activeFilter={previousSex}
+        />
       </section>
+
+      <p>Names to pick from:</p>
+      <p>(click to select as favourite)</p>
+      <section id="all names" className={styles.body}>
+        <AllNames
+          nameData={filteredNameData}
+          handleFavourites={handleFavourites}
+        />
+      </section>
+
       <p>Favourites:</p>
-      <section className={styles.body}>
-        {prevFavourites.map((fav, i) => (
-          <div key={i}>{NamePresenter(fav)}</div>
-        ))}
+      <p>(click to delete from favourites)</p>
+      <section id="favourite names" className={styles.body}>
+        <AllFavourites
+          favouriteList={prevFavourites}
+          handleDeleteFavourite={handleDeleteFavourite}
+        />
       </section>
     </>
   );

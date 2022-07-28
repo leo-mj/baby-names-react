@@ -18,6 +18,7 @@
 }
 
 .filterbtn {
+  border: solid 1px;
   margin: 2px 4px 2px 4px;
   font-size: medium;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -32,14 +33,26 @@
   box-shadow: 0.5px 2px #f07167;
 }
 
-.name:hover {
-  background: black;
-}
-
 #boyname {
   background: linear-gradient(#fed9b7, white);
 }
 
+#boyname:hover {
+  text-shadow: #f07167;
+}
+
 #girlname {
   background: #fdfcdc;
+}
+
+#girlname:hover {
+  box-shadow: #e3d5ca;
+}
+
+#girlfilter {
+  background: #fdfcdc;
+}
+
+#boyfilter {
+  background: linear-gradient(#fed9b7, white);
 }
