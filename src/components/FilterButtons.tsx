@@ -19,12 +19,14 @@ export function FilterButtons(
         off
       </button>
       <button
+        id={styles.girlfilter}
         className={styles.filterbtn}
         onClick={filterButtonProps.handleGirlFilter}
       >
         f
       </button>
       <button
+        id={styles.boyfilter}
         className={styles.filterbtn}
         onClick={filterButtonProps.handleBoyFilter}
       >
@@ -32,7 +34,7 @@ export function FilterButtons(
       </button>
       <p>
         {" "}
-        active filter:{" "}
+        Active filter:{" "}
         <button className={styles.filterbtn}>
           {" "}
           {filterButtonProps.activeFilter || "off"}{" "}
