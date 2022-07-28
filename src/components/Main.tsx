@@ -37,7 +37,9 @@ export function NameLister(): JSX.Element {
     filteredNameData.filter((baby) => baby.name === "Leo (obviously)")
   );
   const handleFavourites = (baby: BabyData) => {
-    setFavourites((prevFavourites) => [baby, ...prevFavourites]);
+    setFavourites((prevFavourites) =>
+      prevFavourites.includes(baby) ? prevFavourites : [baby, ...prevFavourites]
+    );
   };
 
   const handleDeleteFavourite = (favToDelete: BabyData) => {
