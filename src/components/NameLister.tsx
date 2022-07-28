@@ -68,6 +68,7 @@ export function NameLister(): JSX.Element {
       </section>
 
       <p>Names to pick from:</p>
+      <p>(click to select as favourite)</p>
       <section id="all names" className={styles.body}>
         <AllNames
           nameData={filteredNameData}
@@ -76,6 +77,7 @@ export function NameLister(): JSX.Element {
       </section>
 
       <p>Favourites:</p>
+      <p>(click to delete from favourites)</p>
       <section id="favourite names" className={styles.body}>
         <AllFavourites
           favouriteList={prevFavourites}
