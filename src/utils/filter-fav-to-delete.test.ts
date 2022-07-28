@@ -6,7 +6,7 @@ test("returns true if the baby name should not be deleted", () => {
       { id: 1, name: "Alan", sex: "m" },
       { id: 3, name: "Berta", sex: "f" }
     )
-  ).toBe(true),
+  ).toBe(true);
     expect(
       filterFavToDelete(
         { id: 2, name: "Anna", sex: "f" },
@@ -21,7 +21,7 @@ test("returns false if the baby name should be deleted", () => {
       { id: 1, name: "Alan", sex: "m" },
       { id: 4, name: "Alan", sex: "m" }
     )
-  ).toBe(false),
+  ).toBe(false);
     expect(
       filterFavToDelete(
         { id: 2, name: "Anna", sex: "f" },
