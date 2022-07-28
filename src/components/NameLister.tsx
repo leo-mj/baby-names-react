@@ -1,13 +1,14 @@
+import styles from "./name-style.module.css";
 import { useState } from "react";
 import babyData from "../data.json";
 import { BabyData } from "../utils/baby-interface";
 import { sortAlph } from "../utils/sort-alphabetically";
 import { textInputFilter } from "../utils/text-input-filter";
 import { filterBySex } from "../utils/filter-by-sex";
-import styles from "./name-style.module.css";
 import { FilterButtons } from "./FilterButtons";
 import { AllNames } from "./AllNames";
 import { AllFavourites } from "./AllFavourites";
+import { filterFavToDelete } from "../utils/filter-fav-to-delete";
 
 const nameData: BabyData[] = babyData;
 const sortedNameData: BabyData[] = sortAlph(nameData);
@@ -32,15 +33,17 @@ export function NameLister(): JSX.Element {
     filterBySex(baby, previousSex)
   );
 
-  const [prevFavourites, setFavourites] = useState<BabyData[]>([]);
+  const [prevFavourites, setFavourites] = useState<BabyData[]>(
+    filteredNameData.filter((baby) => baby.name === "Leo (obviously)")
+  );
   const handleFavourites = (baby: BabyData) => {
     setFavourites((prevFavourites) => [baby, ...prevFavourites]);
   };
 
-  const handleDeleteFavourite = (favouriteToDelete: BabyData) => {
+  const handleDeleteFavourite = (favToDelete: BabyData) => {
     setFavourites((prevFavourites) =>
-      prevFavourites.filter(
-        (currentBaby) => currentBaby.name !== favouriteToDelete.name
+      prevFavourites.filter((currentBaby) =>
+        filterFavToDelete(currentBaby, favToDelete)
       )
     );
   };
@@ -65,7 +68,7 @@ export function NameLister(): JSX.Element {
       </section>
 
       <p>Names to pick from:</p>
-      <section className={styles.body}>
+      <section id="all names" className={styles.body}>
         <AllNames
           nameData={filteredNameData}
           handleFavourites={handleFavourites}
@@ -73,7 +76,7 @@ export function NameLister(): JSX.Element {
       </section>
 
       <p>Favourites:</p>
-      <section className={styles.body}>
+      <section id="favourite names" className={styles.body}>
         <AllFavourites
           favouriteList={prevFavourites}
           handleDeleteFavourite={handleDeleteFavourite}
