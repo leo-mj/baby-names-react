@@ -4,10 +4,10 @@ import { BabyData } from "../utils/baby-interface";
 import { sortAlph } from "../utils/sort-alphabetically";
 import { textInputFilter } from "../utils/text-input-filter";
 import { filterBySex } from "../utils/filter-by-sex";
-import { NamePresenter } from "./NamePresenter";
 import styles from "./name-style.module.css";
 import { FilterButtons } from "./FilterButtons";
 import { AllNames } from "./AllNames";
+import { AllFavourites } from "./AllFavourites";
 
 const nameData: BabyData[] = babyData;
 const sortedNameData: BabyData[] = sortAlph(nameData);
@@ -37,6 +37,14 @@ export function NameLister(): JSX.Element {
     setFavourites((prevFavourites) => [baby, ...prevFavourites]);
   };
 
+  const handleDeleteFavourite = (favouriteToDelete: BabyData) => {
+    setFavourites((prevFavourites) =>
+      prevFavourites.filter(
+        (currentBaby) => currentBaby.name !== favouriteToDelete.name
+      )
+    );
+  };
+
   return (
     <>
       <input
@@ -56,17 +64,20 @@ export function NameLister(): JSX.Element {
         />
       </section>
 
+      <p>Names to pick from:</p>
       <section className={styles.body}>
         <AllNames
           nameData={filteredNameData}
           handleFavourites={handleFavourites}
         />
       </section>
+
       <p>Favourites:</p>
       <section className={styles.body}>
-        {prevFavourites.map((fav, i) => (
-          <div key={i}>{NamePresenter(fav)}</div>
-        ))}
+        <AllFavourites
+          favouriteList={prevFavourites}
+          handleDeleteFavourite={handleDeleteFavourite}
+        />
       </section>
     </>
   );
