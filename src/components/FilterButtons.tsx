@@ -4,6 +4,7 @@ interface FilterButtonProps {
   handleFilterOff(): void;
   handleGirlFilter(): void;
   handleBoyFilter(): void;
+  activeFilter: string;
 }
 
 export function FilterButtons(
@@ -29,6 +30,14 @@ export function FilterButtons(
       >
         m
       </button>
+      <p>
+        {" "}
+        active filter:{" "}
+        <button className={styles.filterbtn}>
+          {" "}
+          {filterButtonProps.activeFilter || "off"}{" "}
+        </button>{" "}
+      </p>
     </>
   );
 }

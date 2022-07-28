@@ -8,7 +8,7 @@ import { NamePresenter } from "./NamePresenter";
 import styles from "./name-style.module.css";
 import { FilterButtons } from "./FilterButtons";
 
-const nameData = babyData;
+const nameData: BabyData[] = babyData;
 const sortedNameData: BabyData[] = sortAlph(nameData);
 
 export function NameLister(): JSX.Element {
@@ -50,16 +50,10 @@ export function NameLister(): JSX.Element {
           handleFilterOff={handleFilterOff}
           handleGirlFilter={handleGirlFilter}
           handleBoyFilter={handleBoyFilter}
+          activeFilter={previousSex}
         />
       </section>
-      <p>
-        {" "}
-        active filter:{" "}
-        <button className={styles.filterbtn}>
-          {" "}
-          {previousSex || "off"}{" "}
-        </button>{" "}
-      </p>
+
       <section className={styles.body}>
         {filteredNameData.map((baby) => (
           <div key={baby.id} onClick={() => handleFavourites(baby)}>
