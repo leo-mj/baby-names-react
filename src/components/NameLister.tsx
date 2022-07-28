@@ -50,21 +50,32 @@ export function NameLister(): JSX.Element {
 
   return (
     <>
-      <input
-        className={styles.search}
-        value={text}
-        onChange={(event) => {
-          setText(event.target.value);
-        }}
-      />
-
-      <section id="filter buttons">
-        <FilterButtons
-          handleFilterOff={handleFilterOff}
-          handleGirlFilter={handleGirlFilter}
-          handleBoyFilter={handleBoyFilter}
-          activeFilter={previousSex}
+      <p>Favourites:</p>
+      <p>(click to delete from favourites)</p>
+      <section id="favourite names" className={styles.body}>
+        <AllFavourites
+          favouriteList={prevFavourites}
+          handleDeleteFavourite={handleDeleteFavourite}
         />
+      </section>
+
+      <section id="searchAndFilter">
+        <input
+          className={styles.search}
+          value={text}
+          onChange={(event) => {
+            setText(event.target.value);
+          }}
+        />
+
+        <section id="filter buttons">
+          <FilterButtons
+            handleFilterOff={handleFilterOff}
+            handleGirlFilter={handleGirlFilter}
+            handleBoyFilter={handleBoyFilter}
+            activeFilter={previousSex}
+          />
+        </section>
       </section>
 
       <p>Names to pick from:</p>
@@ -73,15 +84,6 @@ export function NameLister(): JSX.Element {
         <AllNames
           nameData={filteredNameData}
           handleFavourites={handleFavourites}
-        />
-      </section>
-
-      <p>Favourites:</p>
-      <p>(click to delete from favourites)</p>
-      <section id="favourite names" className={styles.body}>
-        <AllFavourites
-          favouriteList={prevFavourites}
-          handleDeleteFavourite={handleDeleteFavourite}
         />
       </section>
     </>

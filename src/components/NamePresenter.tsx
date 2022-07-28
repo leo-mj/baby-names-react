@@ -5,16 +5,16 @@ export function NamePresenter(baby: BabyData): JSX.Element {
   return (
     <>
       {baby.sex === "m" && (
-        <p className={styles.name} id={styles.boyname}>
+        <button className={styles.name} id={styles.boyname}>
           {" "}
           {baby.name}{" "}
-        </p>
+        </button>
       )}
       {baby.sex === "f" && (
-        <p className={styles.name} id={styles.girlname}>
+        <button className={styles.name} id={styles.girlname}>
           {" "}
           {baby.name}{" "}
-        </p>
+        </button>
       )}
     </>
   );
