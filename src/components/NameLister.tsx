@@ -1,7 +1,7 @@
 import { useState } from "react";
 import babyData from "../data.json";
 import { BabyData } from "../utils/baby-interface";
-import { sortAlph } from "../utils/sortAlph";
+import { sortAlph } from "../utils/sort-alphabetically";
 import { textInputFilter } from "../utils/text-input-filter";
 import { filterBySex } from "../utils/filter-by-sex";
 import { NamePresenter } from "./NamePresenter";
@@ -44,15 +44,17 @@ export function NameLister(): JSX.Element {
           setText(event.target.value);
         }}
       />
-      <button className={styles.filterbtn} onClick={handleFilterOff}>
-        off
-      </button>
-      <button className={styles.filterbtn} onClick={handleGirlFilter}>
-        f
-      </button>
-      <button className={styles.filterbtn} onClick={handleBoyFilter}>
-        m
-      </button>
+      <section id="filter buttons">
+        <button className={styles.filterbtn} onClick={handleFilterOff}>
+          off
+        </button>
+        <button className={styles.filterbtn} onClick={handleGirlFilter}>
+          f
+        </button>
+        <button className={styles.filterbtn} onClick={handleBoyFilter}>
+          m
+        </button>
+      </section>
       <p>
         {" "}
         active filter:{" "}
