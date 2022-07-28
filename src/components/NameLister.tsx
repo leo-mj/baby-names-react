@@ -30,6 +30,11 @@ export function NameLister(): JSX.Element {
     filterBySex(baby, previousSex)
   );
 
+  const [prevFavourites, setFavourites] = useState<BabyData[]>([]);
+  const handleFavourites = (baby: BabyData) => {
+    setFavourites((prevFavourites) => [baby, ...prevFavourites]);
+  };
+
   return (
     <>
       <input
@@ -57,7 +62,17 @@ export function NameLister(): JSX.Element {
         </button>{" "}
       </p>
       <section className={styles.body}>
-        {filteredNameData.map(NamePresenter)}{" "}
+        {filteredNameData.map((baby) => (
+          <div key={baby.id} onClick={() => handleFavourites(baby)}>
+            {NamePresenter(baby)}
+          </div>
+        ))}
+      </section>
+      <h2>Favourites:</h2>
+      <section className={styles.body}>
+        {prevFavourites.map((fav, i) => (
+          <div key={i}>{NamePresenter(fav)}</div>
+        ))}
       </section>
     </>
   );

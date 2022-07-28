@@ -3,7 +3,7 @@ import styles from "./name-style.module.css";
 
 export function NamePresenter(baby: BabyData): JSX.Element {
   return (
-    <section key={baby.name}>
+    <>
       {baby.sex === "m" && (
         <p className={styles.name} id={styles.boyname}>
           {" "}
@@ -16,6 +16,6 @@ export function NamePresenter(baby: BabyData): JSX.Element {
           {baby.name}{" "}
         </p>
       )}
-    </section>
+    </>
   );
 }
