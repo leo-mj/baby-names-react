@@ -6,6 +6,7 @@ import { textInputFilter } from "../utils/text-input-filter";
 import { filterBySex } from "../utils/filter-by-sex";
 import { NamePresenter } from "./NamePresenter";
 import styles from "./name-style.module.css";
+import { FilterButtons } from "./FilterButtons";
 
 const nameData = babyData;
 const sortedNameData: BabyData[] = sortAlph(nameData);
@@ -45,15 +46,11 @@ export function NameLister(): JSX.Element {
         }}
       />
       <section id="filter buttons">
-        <button className={styles.filterbtn} onClick={handleFilterOff}>
-          off
-        </button>
-        <button className={styles.filterbtn} onClick={handleGirlFilter}>
-          f
-        </button>
-        <button className={styles.filterbtn} onClick={handleBoyFilter}>
-          m
-        </button>
+        <FilterButtons
+          handleFilterOff={handleFilterOff}
+          handleGirlFilter={handleGirlFilter}
+          handleBoyFilter={handleBoyFilter}
+        />
       </section>
       <p>
         {" "}
