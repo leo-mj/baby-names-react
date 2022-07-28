@@ -68,7 +68,7 @@ export function NameLister(): JSX.Element {
           </div>
         ))}
       </section>
-      <h2>Favourites:</h2>
+      <p>Favourites:</p>
       <section className={styles.body}>
         {prevFavourites.map((fav, i) => (
           <div key={i}>{NamePresenter(fav)}</div>
